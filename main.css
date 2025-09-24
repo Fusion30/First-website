@@ -3,7 +3,25 @@ html{
 }
 body{
     background-color: black;
-    color: rgb(255, 193, 92);
-    text-align: center;
+    color: white;
+    
+    font-weight: bold;
+    font-size: 150%;
     font-family: monospace;
+    letter-spacing: 0.5px;
+
+}
+
+#qoutes_body{
+    font-style:italic;
+font-weight: lighter;
+}
+
+a{
+    color: white;    
+}
+
+
+nav{
+    text-align: left;
 }
