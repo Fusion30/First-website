@@ -1,0 +1,31 @@
+{
+  "name": "amiya.com",
+  "version": "1.0.0",
+  "description": "Personal blog",
+  "homepage": "https://github.com/Fusion30/First-website#readme",
+  "bugs": {
+    "url": "https://github.com/Fusion30/First-website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fusion30/First-website.git"
+  },
+  "license": "ISC",
+  "author": "Amiya",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
