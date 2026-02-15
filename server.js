@@ -1,29 +1,23 @@
 import cors from 'cors'
 import express from 'express'
 import multer from 'multer'
-import { seedTable } from "./seedTable.js"
-import { getDBConnection } from "./dbConnection.js"
+import { seedTable } from "./DB/seedTable.js"
+import { getDBConnection } from "./DB/dbConnection.js"
+import { deleteBlog } from "./DB/deleteBlog.js"
 
 const app = express()
-app.use(cors())
-app.use(express.json())
-
 const upload = multer()
 
+app.use(cors())
+app.use(express.json())
 app.use(express.static("Public"))
-
-// Expose shared browser modules (importable from 
-// both Admin and Public pages).
 app.use("/shared", express.static("Shared"))
-
 app.use("/admin", express.static("Admin"))
 app.post('/admin/upload', upload.none(), seedTable)
 
-// Returns latest blogs as a bare array so both 
-// clients can render easily.
+// Fetch blogs as a bare array of objects: [{ id, heading, content }, ...]
 app.get("/blogs", async (req, res) => {
     const db = await getDBConnection()
-
     try {
         const blogs = await db.all(
             "SELECT id, heading, content FROM blogs ORDER BY id DESC LIMIT 5"
@@ -35,6 +29,9 @@ app.get("/blogs", async (req, res) => {
         await db.close()
     }
 })
+
+// Delete a blog by id
+app.delete("/blogs/:id", deleteBlog)
 
 app.listen(3000, () => {
     console.log("Server is listening on port 3000")

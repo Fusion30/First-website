@@ -1,6 +1,4 @@
-// Frontend homepage: fetch latest blogs and render them on page load.
-
-import { fetchBlogs } from "/shared/blogsApi.js";
+import { getBlogs } from "/shared/getBlogs.js";
 
 const blogContainer = document.getElementById("blog-container");
 
@@ -18,10 +16,10 @@ function renderBlogs(blogs) {
         blogContainer.appendChild(blogElement);
     }
 }
-
+// Fetch + render on page load.
 (async () => {
     try {
-        const blogs = await fetchBlogs();
+        const blogs = await getBlogs();
         renderBlogs(blogs);
     } catch (err) {
         console.error(err);

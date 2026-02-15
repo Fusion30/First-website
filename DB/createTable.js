@@ -1,4 +1,4 @@
-import { getDBConnection } from "./db.js";
+import { getDBConnection } from "./dbConnection.js";
 
 const db = await getDBConnection();
 async function createTable() {
@@ -8,9 +8,9 @@ async function createTable() {
                 heading TEXT NOT NULL,
                 content TEXT NOT NULL
                 )
-                `)
-    await db.close()
-    console.log("Table created successfully")
+                `);
+    await db.close();
+    console.log("Table created successfully");
 }
 
 createTable();
