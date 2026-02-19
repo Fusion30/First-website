@@ -8,7 +8,7 @@ export async function deleteBlog(req, res) {
   }
 
     const db = await getDBConnection();
-        try {
+    try {
         const result = await db.run("DELETE FROM blogs WHERE id = ?", [id]);
 
         if (!result?.changes) {
@@ -16,9 +16,9 @@ export async function deleteBlog(req, res) {
         }
 
         return res.status(200).json({ deleted: true, id });
-        } catch (error) {
+    } catch (error) {
         return res.status(500).json({ message: "Error deleting blog" });
-        } finally {
-            await db.close();
-        }
+    } finally {
+        await db.close();
+    }
 }
