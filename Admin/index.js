@@ -29,7 +29,7 @@ async function fetchAndRenderBlogs() {
 }
 fetchAndRenderBlogs();// Fetch + render on page load.
 
-//----  Listening for delete button clicks ----
+//====  Listening for delete button clicks ====
 blogsContainer.addEventListener("click", async (e) => {
      /*
      Event Delegation: Instead of attaching a click listener to each delete button,
@@ -57,8 +57,7 @@ blogsContainer.addEventListener("click", async (e) => {
         const res = await fetch(`/blogs/${encodeURIComponent(id)}`, {
             method: "DELETE",
         });
-
-        //fetch handles only network errors. For HTTP errors (like 404 or    500), it resolves successfully, but res.ok will be false.
+        //fetch handles only network errors. For HTTP errors (like 404,500), it resolves successfully, but res.ok will be false.
         //Just good error handling
         if (!res.ok) {
             let message = `Failed to delete blog: ${res.status} ${res.statusText}`;
@@ -71,7 +70,6 @@ blogsContainer.addEventListener("click", async (e) => {
             alert(message);
             return;
         }
-
         await fetchAndRenderBlogs();
     } catch (err) {
         console.error(err);
@@ -79,7 +77,7 @@ blogsContainer.addEventListener("click", async (e) => {
     }
 });
 
-//--- uploading blog to database ---
+//=== uploading blog to database ===
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -88,7 +86,13 @@ form.addEventListener("submit", async (e) => {
         method: "POST",
         body: formData
     })
+    if (!res.ok) {
+        const data = await res.json()
+        alert(data?.message || "Error uploading blog")
+        return
+    }
     const data = await res.json()
     form.reset()
+    await fetchAndRenderBlogs()
 })
 

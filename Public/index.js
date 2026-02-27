@@ -9,10 +9,15 @@ function renderBlogs(blogs) {
     for (const blog of blogs) {
         const blogElement = document.createElement("div");
         blogElement.classList.add("blog");
-        blogElement.innerHTML = `
-            <h2>${blog.heading}</h2>
-            <p>${blog.content}</p>
-        `;
+        
+        const heading = document.createElement("h2");
+        heading.textContent = blog.heading;
+        blogElement.appendChild(heading);
+
+        const p = document.createElement("p");
+        p.textContent = blog.content;
+        blogElement.appendChild(p);
+
         blogContainer.appendChild(blogElement);
     }
 }

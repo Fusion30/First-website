@@ -52,6 +52,48 @@ p {
   overflow-wrap: break-word; /* modern name */
 }
 
+#blog-container {
+  margin: 30px auto 0 auto;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog {
+  background-color: rgb(60, 60, 60);
+  border-left: 4px solid rgb(243, 165, 235);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.blog:hover {
+  background-color: rgb(70, 70, 70);
+}
+
+.blog h2 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  font-size: 24px;
+  color: rgb(243, 165, 235);
+}
+
+.blog p {
+  margin: 0 0 1.6rem 0;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.blog p:last-child {
+  margin-bottom: 0;
+}
+
+.full-blog{
+  background-color: rgb(60, 60, 60);
+  border-left: 4px solid rgb(243, 165, 235);
+  padding: 20px;
+  border-radius: 4px;
+}
+
 #qoutes_body {
   font-style: italic;
   font-weight: lighter;

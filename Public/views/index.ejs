@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Amiya">
+  <meta name="description" content="This is my personal website">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Amiya</title>
+  <link rel="stylesheet" href="main.css" type="text/css">
+  <link rel="icon" type="image/png" href="favicon-16x16.png">
+
+  <!-- Open Graph for social previews -->
+  <meta property="og:title" content="Amiya | Blog Previews">
+  <meta property="og:description" content="Preview the latest blogs by Amiya. Click to read full articles on philosophy, quotes, books, and more.">
+  <meta property="og:url" content="<%= baseUrl %>/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="<%= baseUrl %>/preview-image.png"><!-- Replace with your actual image URL -->
+
+  <!-- Twitter Card -->
+  <meta name="twitter:title" content="Amiya | Blog Previews">
+  <meta name="twitter:description" content="Preview the latest blogs by Amiya. Click to read full articles on philosophy, quotes, books, and more.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="<%= baseUrl %>/preview-image.png"><!-- Replace with your actual image URL -->
+</head>
+
+<body>
+  <header>
+    <!-- Logo -->
+      <h1><a href="/" id="logo">amiya</a></h1>
+
+      <!-- Navigation bar -->
+     <nav  id="head_nav" aria-label="Main navigation">      
+          <!---<a href="blogs.html" target="_blank">
+            Blogs
+          </a>
+          <a href="qoutes.html" target="_blank">
+              Quotes
+          </a>
+          
+          <a href="https://x.com/Sapien030AT" target="_blank">
+             X
+          </a>
+          <a href="books.html" target="_blank">
+              Books
+          </a>-->
+        </nav>
+        
+        <div id="blog-container">
+          <% blogs.forEach(blog => { %>
+            <div class="blog" data-id="<%= blog.id %>">
+              <h2><%= blog.heading %></h2>
+              <p>
+                <% 
+                  const preview = blog.content.substring(0, 200);
+                  const trimmed = preview.substring(0, preview.lastIndexOf(' '));
+                %>
+                <%= trimmed %>...
+              </p>
+            </div>
+          <% }); %>
+        </div>
+  </header>
+
+  <main>
+    <!-- Content goes here -->
+  </main>
+
+  <footer>
+    <p>&copy;Amiya</p>
+  </footer>
+  <script>
+    document.getElementById('blog-container').addEventListener('click', function(e) {
+      const blogDiv = e.target.closest('.blog');
+      if (blogDiv && blogDiv.dataset.id) {
+        window.location.href = '/blog/' + blogDiv.dataset.id;
+      }
+    });
+  </script>
+</body>
+
+</html>

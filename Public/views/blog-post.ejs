@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Amiya">
+  <meta name="description" content="<%= blog.heading %> - <%= blog.content.substring(0, 160).replace(/\n/g, ' ') %>">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title><%= blog.heading %> - Amiya</title>
+  <link rel="stylesheet" href="/main.css" type="text/css">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png">
+
+  <!-- Open Graph for social previews -->
+  <meta property="og:title" content="<%= blog.heading %> - Amiya">
+  <meta property="og:description" content="<%= blog.content.substring(0, 160).replace(/\n/g, ' ') %>">
+  <meta property="og:url" content="https://amiya.com/blog/<%= blog.id %>">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://amiya.com/preview-image.png"><!-- Replace with your actual image URL -->
+
+  <!-- Twitter Card -->
+  <meta name="twitter:title" content="<%= blog.heading %> - Amiya">
+  <meta name="twitter:description" content="<%= blog.content.substring(0, 160).replace(/\n/g, ' ') %>">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://amiya.com/preview-image.png"><!-- Replace with your actual image URL -->
+</head>
+
+<body>
+  <header>
+    <!-- Logo -->
+      <h1><a href="/" id="logo">amiya</a></h1>
+
+      <!-- Navigation bar -->
+     <nav  id="head_nav" aria-label="Main navigation">      
+          <!--<a href="/blogs.html" target="_blank">
+            Blogs
+          </a>
+          <a href="/qoutes.html" target="_blank">
+              Quotes
+          </a>
+          
+          <a href="https://x.com/Sapien030AT" target="_blank">
+             X
+          </a>
+          <a href="/books.html" target="_blank">
+              Books
+          </a>-->
+        </nav>
+  </header>
+
+  <main>
+    <div id="blog-container">
+      <div class="full-blog">
+        <h2><%= blog.heading %></h2>
+        <p><%= blog.content %></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy;Amiya</p>
+  </footer>
+</body>
+
+</html>
