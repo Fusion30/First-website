@@ -20,6 +20,17 @@ deleteBlog.js handles deleting
 
 Bugs
 
-1. When blog added deleted, no auto pg reload is happening.
-2. When live, when I modify database, the app shows the changes but after a while returns back to its before modification state.
-3. Blogs are rendering as one single big paragraph.
+1. cronjob.org failing due to too large output.
+
+Future TODO:
+Health Endpoint Security (Optional)
+If needed later, protect `/healthz` with a secret token so only your uptime monitor can pass.
+
+How it works:
+
+- Set environment variable: `HEALTH_TOKEN=<long-random-string>`
+- Monitor URL: `/healthz?token=<same-token>`
+- Server returns success only when token matches (otherwise `403`)
+
+Example monitor URL:
+`https://your-app.onrender.com/healthz?token=your-secret-token`

@@ -15,6 +15,11 @@ app.use(cors())
 app.use(express.json())
 app.post('/admin/upload', upload.none(), seedTable)
 
+// Lightweight health endpoint for uptime checks
+app.get('/healthz', (_req, res) => {
+    res.status(204).end()
+})
+
 // Render homepage with blog previews
 app.get('/', async (req, res) => {
     const db = await getDBConnection()
