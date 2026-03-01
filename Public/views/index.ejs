@@ -52,11 +52,12 @@
               <h2><%= blog.heading %></h2>
               <p>
                 <% 
-                  const preview = blog.content.substring(0, 200);
+                  const preview = blog.content.substring(0, 180);
                   const trimmed = preview.substring(0, preview.lastIndexOf(' '));
                 %>
-                <%= trimmed %>...
+                <%- trimmed %>...
               </p>
+              <!--<%= `${blog.content}` %>>-->
             </div>
           <% }); %>
         </div>
